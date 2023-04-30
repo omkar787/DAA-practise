@@ -8,7 +8,7 @@ def mcm(order):
     # Number of matrices = order - 1
     n = len(order) - 1
     # Creating M and S matrix for n * n
-    M = [[-1 for j in range(n)] for i in range(n)]
+    M = [[0 for j in range(n)] for i in range(n)]
     S = [[-1 for j in range(n)] for i in range(n)]
 
     # Traversing the matrix diagonally
@@ -42,14 +42,20 @@ def print_optimal_parens(s, i, j):
 
 
 ord = [5,4,6,2,7]
+# ord = [1, 85, 91, 14, 77, 96]
 M,S = mcm(ord)
 
 print_optimal_parens(S, 0, len(ord) - 2)
 print()
 for i in range(len(S)):
-  print(S[i])
+  print("[ ", end=" ")
+  for j in range(len(S[i])):
+     print(S[i][j]+1,end=" ")
+  print(" ]")
 
 print("\n")
-print("--------------------M - Matrix-----------------")
 for i in range(len(M)):
-  print(M[i])
+  print("[ ", end=" ")
+  for j in range(len(S[i])):
+     print(M[i][j],end=" ")
+  print(" ]")
